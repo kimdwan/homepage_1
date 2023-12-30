@@ -5,3 +5,4 @@ application/frontend/build
 # 백엔드 삭제파일 
 application/backend/.env
 application/backend/node_modules
+application/backend/prisma/migrations
