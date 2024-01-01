@@ -1,15 +1,17 @@
 import { LoginFormState } from "../Hook"
-import { useEffect } from "react"
+import { useEffect,useContext } from "react"
+import {MainContext} from "../../../App"
 
 export const LoginModal = ({ closeModal }) => {
   const { register,handleSubmit,errors, onSubmit,isLogin,tokens} = LoginFormState()
+  const { setUserToken } = useContext(MainContext)
 
   useEffect(() => {
     if (isLogin) {
       closeModal()
-      console.log(tokens)
+      setUserToken(tokens)
     }
-  }, [isLogin,closeModal,tokens])
+  }, [isLogin,closeModal,tokens,setUserToken])
   
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
