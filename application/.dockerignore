@@ -1,0 +1,13 @@
+#프론트엔드에서 지워야 하는거 
+frontend/build/
+frontend/dist/
+frontend/node_modules/
+frontend/readme.md
+
+# 벡엔드에서 지워야 하는거
+backend/dist/
+backend/node_modules/
+backend/prisma/migrations/
+backend/.env
+backend/.gitignore
+backend/readme.md

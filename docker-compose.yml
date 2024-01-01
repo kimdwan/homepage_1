@@ -1,0 +1,38 @@
+version: '3.9'
+
+networks:
+  mynetwork:
+
+services:
+  db: 
+    networks:
+      - mynetwork
+    container_name: db
+    image: postgres:15
+    restart: always
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_DB: dwdb
+      POSTGRES_USER: dw 
+      POSTGRES_PASSWORD: dw1216
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  application:
+    container_name: application
+    build: ./application
+    ports:
+      - 3000:3000
+    env_file:
+      - ./application/backend/.env.prod
+    depends_on:
+      - db
+    volumes:
+      - ./application/frontend/build:/app/frontend/build
+    networks:
+      - mynetwork
+
+volumes:
+  postgres_data:
+
